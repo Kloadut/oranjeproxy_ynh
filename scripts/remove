@@ -1,0 +1,8 @@
+#!/bin/bash
+
+domain=$(sudo yunohost app setting oranjeproxy domain)
+
+sudo rm -rf /var/www/oranjeproxy
+sudo rm -f /etc/nginx/conf.d/$domain.d/oranjeproxy.conf
+
+sudo service nginx reload

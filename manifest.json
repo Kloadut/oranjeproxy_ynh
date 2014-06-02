@@ -1,0 +1,35 @@
+{
+    "name": "OranjeProxy",
+    "id": "oranjeproxy",
+    "description": {
+        "en": "A simple PHP proxy",
+        "fr": "Un proxy PHP léger"
+    },
+    "developer": {
+        "name": "kload",
+        "email": "kload@kload.fr",
+        "url": "http://kload.fr"
+    },
+    "multi_instance": "true",
+    "arguments": {
+        "install" : [
+            {
+                "name": "domain",
+                "ask": {
+                    "en": "Choose a domain for OranjeProxy",
+                    "fr": "Choisissez un domaine pour OranjeProxy"
+                },
+                "example": "domain.org"
+            },
+            {
+                "name": "path",
+                "ask": {
+                    "en": "Choose a path for OranjeProxy",
+                    "fr": "Choisissez un chemin pour OranjeProxy"
+                },
+                "example": "/proxy",
+                "default": "/proxy"
+            }
+        ]
+    }
+}
