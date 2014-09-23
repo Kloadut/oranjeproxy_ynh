@@ -5,6 +5,7 @@
         "en": "A simple PHP proxy",
         "fr": "Un proxy PHP léger"
     },
+    "licence": "GPL",
     "developer": {
         "name": "kload",
         "email": "kload@kload.fr",
