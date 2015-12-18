@@ -139,7 +139,7 @@ $_http_s = ( (isset($_ENV['HTTPS']) and $_ENV['HTTPS'] == 'on') or $_SERVER['SER
 $_http_port = ($_SERVER['SERVER_PORT'] != 80 and $_SERVER['SERVER_PORT'] != 443 ? ':'.$_SERVER['SERVER_PORT'] : '');
 $_script_url = $_http_s.'://'.$_http_host.$_http_port.$_SERVER['PHP_SELF'];
 
-$_script_base  = substr($_script_url, 0, strrpos($_script_url, '/')+1);
+$_script_base  = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
 
 /////////////////
 
@@ -493,6 +493,9 @@ function afficher_page_form($page) {
 .windows-popup { background-color: #C27D61; }
 .windows-popup p, .windows-popup form { margin: 5px; }' . "\n";
 	echo '</style>'."\n";
+	if( file_exists(__DIR__ . '/user.css') ) {
+		echo '<link rel="stylesheet" href="./user.css" media="screen" />';
+	}
 	echo '</head>'."\n";
 	echo '<body>'."\n";
 
@@ -603,7 +606,7 @@ do {
 	// SET REQUEST HEADERS
 	//
 	$_request_headers = '';
-	$_request_headers = $_request_method.' '.$_url_parts['path'];
+	$_request_headers = $_request_method.' '. urldecode( $_url_parts['path'] );
 
 	if (isset($_url_parts['query'])) {
 		$_request_headers .= '?';
@@ -998,7 +1001,7 @@ else {
 
 					if (!isset($attrs['method']) || strtolower(trim($attrs['method'])) === 'get') {
 						$extra_html = '<input type="hidden" name="' . '____pgfa' . '" value="' .complete_url($attrs['action'], false). '" />';
-						$attrs['action'] = 'index.php';
+						$attrs['action'] = '#';
 						$attrs['method'] = 'post';
 						break;
 					}
@@ -1115,7 +1118,7 @@ else {
 						
 						$attrs['href'] = complete_url($attrs['href']);
 					}
-
+					break;
 				default:
 					foreach ($tags[$tag] as $attr) {
 						if (isset($attrs[$attr])) {

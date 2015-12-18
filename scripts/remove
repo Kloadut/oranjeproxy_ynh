@@ -2,7 +2,13 @@
 
 domain=$(sudo yunohost app setting oranjeproxy domain)
 
+# Remove sources
 sudo rm -rf /var/www/oranjeproxy
+
+# Remove nginx config
 sudo rm -f /etc/nginx/conf.d/$domain.d/oranjeproxy.conf
 
+# Restart services
+sudo service php5-fpm restart
 sudo service nginx reload
+sudo yunohost app ssowatconf
