@@ -1,4 +1,5 @@
 {
+    "package_format": 1,
     "name": "OranjeProxy",
     "id": "oranjeproxy",
     "description": {
@@ -10,7 +11,10 @@
         "name": "kload",
         "email": "kload@kload.fr"
     },
-    "multi_instance": "true",
+    "multi_instance": "false",
+       "requirements": {
+        "yunohost": ">= 2.4.0"
+    },
     "arguments": {
         "install" : [
             {
